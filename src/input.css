@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.fancy-link{
+header a{
 padding-bottom: 0px;
 background-image: linear-gradient(90deg,white,white);
 background-size: 0% 3px;
@@ -10,6 +10,6 @@ background-repeat: no-repeat;
 background-position: left bottom;
 transition: background-size 300ms ease;
 }
-.fancy-link:hover{
+header a:hover{
     background-size: 100% 3px;
 }
