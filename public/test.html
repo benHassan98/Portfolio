@@ -1,17 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PreLine</title>
-    <link href="../dist/output.css" rel="stylesheet">
-      <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <title>Document</title>
+
 </head>
+<style>
+    * {
+        color: white;
+    }
+
+    body {
+        height: 100vh;
+        width: 100vw;
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .card-container{
+/* background-color: red; */
+    }
+    .card{
+        height: 200px;
+        width: 200px;
+        background-color: blue;
+        border: 1px white solid;
+        text-align: center;
+        padding-top: 50px;
+        transition: transform 1s ease;
+    }
+    .card:hover{
+        transform: translateY(-0.5rem);
+    }
+</style>
+
 <body>
-    <h1 class="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-      <h1>Hello world</h1>
+<div class="card-container">
+<div class="card">
+<h4>HTML</h4>
+<h4>CSS</h4>
+<h4>JS</h4>
+
+</div>
+</div>
+
+
+
 </body>
+
 </html>
