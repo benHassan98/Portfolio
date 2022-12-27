@@ -60,18 +60,39 @@
   .socials a:hover {
     transform: translateX(40%);
   }
-  header{
+
+  header {
     transition: background-color 0.4s ease;
   }
-  header.show{
-    background-color: rgb(30 64 175);
+
+  header.show {
+    background-color: rgb(30 58 138);
   }
-  .l-name{
-    color:rgb(30 64 175);
+
+  .l-name {
+    color: rgb(30 64 175);
     transition: color 0.4s ease;
   }
-  .l-name.show{
+
+  .l-name.show {
     color: white;
+  }
+  .top-btn{
+    color:white;
+    opacity: 0%;
+    transform: translateY(100%);
+    /* transition: background-color 0.1s ease;
+    transition: color 1s ease;
+    transition: opacity, transform 1.5s ease ; */
+    transition: 0.5s;
+  }
+  .top-btn.show{
+    opacity: 100%;
+    transform: translateY(-100%);
+  }
+  .top-btn.show:hover{
+    background-color: white;
+    color: rgb(30 64 175); 
   }
 </style>
 
@@ -80,7 +101,7 @@
 
 
   <header
-    class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 text-sm py-3 sm:py-0  dark:border-gray-700 fixed w-full z-20 top-0 left-0">
+    class="flex flex-wrap sm:justify-start sm:flex-nowrap text-sm py-3 sm:py-0 fixed w-full z-20 top-0 left-0">
     <nav class="relative max-w-7xl w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8"
       aria-label="Global">
       <div class="flex items-center justify-between">
@@ -129,8 +150,8 @@
     </div>
     <div class="socials text-white text-4xl flex flex-col h-[10rem] w-[20rem] self-start">
 
-      <a class="grow bg-sky-800 w-[20rem] flex items-center justify-end pr-4 gap-8" target="_blank" 
-         href="https://www.linkedin.com/in/abdullah-hassanm/">
+      <a class="grow bg-sky-800 w-[20rem] flex items-center justify-end pr-4 gap-8" target="_blank"
+        href="https://www.linkedin.com/in/abdullah-hassanm/">
         <p>LinkedIn</p>
         <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" preserveAspectRatio="xMidYMid meet"
           viewBox="0 0 24 24">
@@ -141,7 +162,7 @@
 
 
       <a class="grow bg-neutral-900 w-[20rem] flex items-center justify-end pr-4 gap-8" target="_blank"
-          href="https://github.com/yabani98">
+        href="https://github.com/yabani98">
         <p>GitHub</p>
         <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" preserveAspectRatio="xMidYMid meet"
           viewBox="0 0 20 20">
@@ -152,7 +173,7 @@
 
 
       <a class="grow bg-red-800 w-[20rem] flex items-center justify-end pr-4 gap-8" target="_blank"
-         href="mailto:abdullahH.Mahmoud98@gmail.com">
+        href="mailto:abdullahH.Mahmoud98@gmail.com">
         <p>Email</p>
         <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" preserveAspectRatio="xMidYMid meet"
           viewBox="0 0 32 32">
@@ -163,6 +184,13 @@
       </a>
 
     </div>
+    <button class="top-btn bg-blue-800 rounded-full fixed z-20 bottom-8 right-8">
+      <svg xmlns="http://www.w3.org/2000/svg" width="4rem" height="4rem" preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M6.7 11.7q-.275-.275-.275-.7q0-.425.275-.7l4.6-4.6q.15-.15.325-.212q.175-.063.375-.063t.375.063q.175.062.325.212l4.6 4.6q.275.275.287.687q.013.413-.287.713q-.275.275-.7.275q-.425 0-.7-.275L12 7.825L8.1 11.7q-.275.275-.688.288Q7 12 6.7 11.7Zm0 6q-.275-.275-.275-.7q0-.425.275-.7l4.6-4.6q.15-.15.325-.213q.175-.062.375-.062t.375.062q.175.063.325.213l4.6 4.6q.275.275.287.687q.013.413-.287.713q-.275.275-.7.275q-.425 0-.7-.275L12 13.825L8.1 17.7q-.275.275-.688.288Q7 18 6.7 17.7Z" />
+        </svg>
+    </button>
   </div>
 
   <div id="about-me" class="bg-slate-900 w-full h-[30rem] flex flex-col text-white">
@@ -716,7 +744,7 @@
   <script src="../node_modules/preline/dist/preline.js"></script>
   <script>
     const typed = new Typed('.animate', {
-      strings: ["Software Engineer", 'Soccer Lover','Video Gamer'],
+      strings: ["Software Engineer", 'Soccer Lover', 'Video Gamer'],
       typeSpeed: 100,
       backSpeed: 100,
       loop: true,
@@ -724,20 +752,31 @@
     const isScrolledIntoView = (id) => {
       const top = document.getElementById(id).getBoundingClientRect().top;
       const bottom = document.getElementById(id).getBoundingClientRect().bottom;
-
-      return (top < window.innerHeight && bottom >= 0);
+      const isVisible = (top < window.innerHeight && bottom >= 0);
+      return isVisible;
 
     };
+    document.querySelector('.top-btn').addEventListener('click',()=>{
+      window.scrollTo(0,0);
+    });
+    document.addEventListener('scroll', () => {
+      if (!window.pageYOffset) {
+        document.querySelector('header').classList.remove('show');
+        document.querySelector('.l-name').classList.remove('show');
+      } else {
+        document.querySelector('header').classList.add('show');
+        document.querySelector('.l-name').classList.add('show');
+      }
+    });
     document.addEventListener('scroll',()=>{
-      if(!window.pageYOffset){
-       document.querySelector('header').classList.remove('show');
-       document.querySelector('.l-name').classList.remove('show');
-      }
-      else{
-       document.querySelector('header').classList.add('show');
-       document.querySelector('.l-name').classList.add('show');
-      }
-    })
+    if(isScrolledIntoView('projects')){
+      document.querySelector('.top-btn').classList.add('show');
+    }
+    else{
+      document.querySelector('.top-btn').classList.remove('show');
+    }
+
+    });
     // document.addEventListener('scroll',()=>{
     //   if (isScrolledIntoView('projects')) {
     //     document.querySelectorAll('#projects .card').forEach(elem => elem.classList.add('show'));
