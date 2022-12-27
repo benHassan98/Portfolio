@@ -60,6 +60,19 @@
   .socials a:hover {
     transform: translateX(40%);
   }
+  header{
+    transition: background-color 0.4s ease;
+  }
+  header.show{
+    background-color: rgb(30 64 175);
+  }
+  .l-name{
+    color:rgb(30 64 175);
+    transition: color 0.4s ease;
+  }
+  .l-name.show{
+    color: white;
+  }
 </style>
 
 <body class="bg-slate-900 flex flex-col">
@@ -71,7 +84,7 @@
     <nav class="relative max-w-7xl w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8"
       aria-label="Global">
       <div class="flex items-center justify-between">
-        <h1 class="flex-none text-5xl dark:text-white">ABDULLAH &nbsp;<span class="text-blue-800">HASSAN</span></h1>
+        <h1 class="flex-none text-5xl dark:text-white">ABDULLAH &nbsp;<span class="l-name">HASSAN</span></h1>
       </div>
       <div id="navbar-collapse-with-animation"
         class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
@@ -715,6 +728,16 @@
       return (top < window.innerHeight && bottom >= 0);
 
     };
+    document.addEventListener('scroll',()=>{
+      if(!window.pageYOffset){
+       document.querySelector('header').classList.remove('show');
+       document.querySelector('.l-name').classList.remove('show');
+      }
+      else{
+       document.querySelector('header').classList.add('show');
+       document.querySelector('.l-name').classList.add('show');
+      }
+    })
     // document.addEventListener('scroll',()=>{
     //   if (isScrolledIntoView('projects')) {
     //     document.querySelectorAll('#projects .card').forEach(elem => elem.classList.add('show'));
